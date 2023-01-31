@@ -1,0 +1,9 @@
+https://techoverflow.net/2022/08/06/how-to-fix-espasyncwebserver-undefined-reference-to-sha1init/
+
+This is a bug in the ESPAsyncWebserver official library, which is not regularly maintained. But you can use use the esphome fork of ESPAsyncWebserver and their fork of AsyncTCP instead.
+
+
+These libraries aren’t available to install through the Arduino Library Manager, so you need to copy the library files to the Arduino Installation Libraries folder. Alternatively, in your Arduino IDE, you can go to Sketch > Include Library > Add .zip Library and select the libraries you’ve just downloaded.
+
+These libraries aren’t available to install through the Arduino Library Manager, so you need to copy the library files to the Arduino Installation Libraries folder. Alternatively, in your Arduino IDE, you can go to Sketch > Include Library > Add .zip Library and select the libraries you’ve just downloaded.
+

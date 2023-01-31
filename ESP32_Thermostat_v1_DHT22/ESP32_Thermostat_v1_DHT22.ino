@@ -564,15 +564,22 @@ void ReadSensor() {
 
     // change from aht10 to dht22
     //dht.begin();
-    sensors_event_t humidity, temp;
-    dht.temperature().getEvent(&temp);
-    dht.humidity().getEvent(&humidity);
+    // sensors_event_t humidity, temp;
+    // dht.temperature().getEvent(&temp);
+    // dht.humidity().getEvent(&humidity);
 
+    sensors_event_t  temp;
+    dht.temperature().getEvent(&temp);
 
     //Serial.print("Temperature: "); Serial.print(temp.temperature); Serial.println(" degrees C");
     //Serial.print("Humidity: "); Serial.print(humidity.relative_humidity); Serial.println("% rH");
     Temperature = temp.temperature;      // Read the current temperature
+
+    sensors_event_t  humidity;
+    dht.humidity().getEvent(&humidity);
+
     Humidity    = humidity.relative_humidity;
+
     if (Temperature >= 50 || Temperature < -30) Temperature = LastTemperature; // Check and correct any errorneous readings
     LastTemperature = Temperature;
     Serial.println("Temperature = " + String(Temperature, 1) + ", Humidity = " + String(Humidity, 0));

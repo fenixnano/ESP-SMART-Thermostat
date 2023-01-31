@@ -19,15 +19,17 @@
 #include <WiFi.h>                      // Built-in
 #include <ESPmDNS.h>                   // Built-in
 #include <SPIFFS.h>                    // Built-in
+// #include <ESPAsyncWebServer.h>  
 #include "ESPAsyncWebServer.h"         // https://github.com/me-no-dev/ESPAsyncWebServer/tree/63b5303880023f17e1bca517ac593d8a33955e94
 // also need stringarray.h
+// #include <AsyncTCP.h>   
 #include "AsyncTCP.h"                  // https://github.com/me-no-dev/AsyncTCP
-#include <Adafruit_Sensor.h>           // Adafruit sensor
+#include "Adafruit_Sensor.h"           // Adafruit sensor
 // Adafruit_AHTX0  aht;                   // I2C mode
 
 
-#include <DHT.h>        //https://github.com/adafruit/DHT-sensor-library
-#include <DHT_U.h>      //https://github.com/adafruit/DHT-sensor-library
+#include "DHT.h"        //https://github.com/adafruit/DHT-sensor-library
+#include "DHT_U.h"      //https://github.com/adafruit/DHT-sensor-library
 
 #define DHTPIN 2     // Digital pin connected to the DHT sensor 
 // Feather HUZZAH ESP8266 note: use pins 3, 4, 5, 12, 13 or 14 --
@@ -804,11 +806,12 @@ void RecoverSettings() {
 }
 //#########################################################################################
 void StartSensor() {
-  Wire.setClock(100000);                           // Slow down the SPI bus for some aht280 devices
+  // Wire.setClock(100000);                           // Slow down the SPI bus for some aht280 devices
   if (!simulating) {                               // If not sensor simulating, then start the real one
     // bool status = aht.begin(); 
     // start dht sensor 
-    bool status = dht.begin();        
+    dht.begin(); 
+    bool status = 1;       
     if (!status) {
       Serial.println("Could not find DHT sensor? Check wiring");
     }

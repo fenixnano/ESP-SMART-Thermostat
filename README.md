@@ -1,3 +1,8 @@
+adpoted from the original project, added support for DHT22
+Added support for timezone in California 
+
+
+
 # ESP-SMART-Thermostat
 How to use an ESP32 or ESP8266 to create a smart thermostat
 
